@@ -15,6 +15,7 @@ export class RegisterComponent {
   city: string = '';
   phoneNumber: string = '';
   documentNumber: string = '';
+errorMessage: any;
 
   constructor(private userService: UserService, private router: Router) {}
 

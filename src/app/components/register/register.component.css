@@ -1,28 +1,74 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f4f8; /* Fondo claro */
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos del contenedor del formulario */
 .register-container {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  form div {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-  }
-  
+  max-width: 400px; /* Ancho máximo del formulario */
+  margin: 50px auto; /* Centrar el formulario */
+  padding: 20px;
+  background-color: #ffffff; /* Fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover en el contenedor */
+.register-container:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+}
+
+/* Título del formulario */
+h2 {
+  text-align: center;
+  color: #007bff; /* Azul principal */
+  margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Estilo de los campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  margin: 10px 0; /* Margen superior e inferior */
+  border: 1px solid #007bff; /* Borde azul */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: border-color 0.3s ease; /* Transición suave del color del borde */
+}
+
+/* Efecto focus en los campos de entrada */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #0056b3; /* Color más oscuro al enfocar */
+  outline: none; /* Quitar el borde de enfoque por defecto */
+}
+
+/* Estilo del botón */
+button {
+  width: 100%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  background-color: #007bff; /* Azul principal */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cursor de mano al pasar el mouse */
+  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+}
+
+/* Efecto hover en el botón */
+button:hover {
+  background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilo de mensajes de error */
+.error-message {
+  color: red; /* Texto rojo */
+  margin-top: 10px; /* Espacio superior */
+}

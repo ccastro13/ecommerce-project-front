@@ -1,6 +1,9 @@
-<h1>Lista de productos</h1>
-<ul>
-  <li *ngFor="let product of products">
-    {{ product.name }} - ${{ product.price }}
-  </li>
-</ul>
+<nav>
+  <a routerLink="/">Inicio</a>
+  <a routerLink="/products">Productos</a>
+  <a routerLink="/login">Iniciar Sesión</a>
+  <a routerLink="/register">Registrarse</a>
+</nav>
+
+<!-- Aquí se cargarán los componentes según la ruta -->
+<router-outlet></router-outlet>
