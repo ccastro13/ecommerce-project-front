@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,39 +10,43 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent {
   fullName: string = '';
   email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
   city: string = '';
   phoneNumber: string = '';
   documentNumber: string = '';
-errorMessage: any;
+  password: string = '';
+  confirmPassword: string = '';
+  errorMessage: string = '';
 
   constructor(private userService: UserService, private router: Router) {}
 
   onSubmit(): void {
+    this.errorMessage = ''; // Reinicia el mensaje de error al enviar
+
     if (this.password === this.confirmPassword) {
-      const userData = {
+      this.userService.register({
         fullName: this.fullName,
         email: this.email,
-        password: this.password,
         city: this.city,
         phoneNumber: this.phoneNumber,
-        documentNumber: this.documentNumber
-      };
-
-      this.userService.register(userData).subscribe(
+        documentNumber: this.documentNumber,
+        password: this.password,
+      }).subscribe(
         () => {
           console.log('Usuario registrado con éxito');
           this.router.navigate(['/login']); // Redirigir a la página de login
         },
         (error) => {
-          console.error('Error al registrar el usuario', error);
-        }
+          console.error('Error al registrar el usuario:', error); // Imprime el error en la consola
+          if (error.error && error.error.message) {
+            this.errorMessage = error.error.message; // Muestra el mensaje de error específico
+          } else {
+            this.errorMessage = 'Error al registrar el usuario. Intenta nuevamente.';
+          }
+        }  
       );
     } else {
-      console.error('Las contraseñas no coinciden');
+      this.errorMessage = 'Las contraseñas no coinciden'; // Mensaje de error si las contraseñas no coinciden
+      console.error(this.errorMessage);
     }
   }
 }
-
-
