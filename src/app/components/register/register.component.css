@@ -1,4 +1,3 @@
-/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   background-color: #e0f7fa; /* Fondo de pantalla azul suave */
@@ -58,15 +57,35 @@ button {
 }
 
 /* Efecto hover en el botón cuando está habilitado */
-button.enabled {
+button.enabled:hover {
   background-color: #78909c; /* Color gris más oscuro al pasar el mouse */
   cursor: pointer; /* Cursor de mano al pasar el mouse */
+}
+
+button:disabled {
+  background-color: #e0e0e0; /* Color gris claro para botón deshabilitado */
+  cursor: not-allowed; /* Cursor de no permitido para el botón deshabilitado */
 }
 
 /* Estilo de mensajes de error */
 .error-message {
   color: red; /* Texto rojo */
   margin-top: 10px; /* Espacio superior */
+}
+
+/* Estilo de mensajes de éxito */
+.success-message {
+  color: green; /* Color verde para el mensaje de éxito */
+  font-size: 18px; /* Tamaño de fuente más grande */
+  margin-top: 15px; /* Espacio superior */
+  font-weight: bold; /* Negrita */
+}
+
+/* Estilo de cuenta regresiva */
+.countdown {
+  color: orange; /* Color naranja para la cuenta regresiva */
+  font-size: 16px; /* Tamaño de fuente */
+  margin-top: 5px; /* Espacio superior */
 }
 
 /* Estilos responsivos */

@@ -1,16 +1,24 @@
 <div class="register-container">
     <h2>Registro</h2>
-    <form (ngSubmit)="onSubmit()" #registerForm="ngForm"> <!-- Agregado #registerForm para referenciar el formulario -->
-        <input type="text" [(ngModel)]="fullName" name="fullName" placeholder="Nombre completo">
-        <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico">
-        <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña">
-        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirmar contraseña">
-        <input type="text" [(ngModel)]="city" name="city" placeholder="Ciudad">
-        <input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" placeholder="Número de teléfono">
-        <input type="text" [(ngModel)]="documentNumber" name="documentNumber" placeholder="Número de documento">
-        <button type="submit" class="btn btn-primary">Registrarse</button> 
+    <form (ngSubmit)="onSubmit()">
+        <input type="text" [(ngModel)]="fullName" name="fullName" placeholder="Nombre completo" required>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico" required>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirmar contraseña" required>
+        <input type="text" [(ngModel)]="city" name="city" placeholder="Ciudad" required>
+        <input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" placeholder="Número de teléfono" required>
+        <input type="text" [(ngModel)]="documentNumber" name="documentNumber" placeholder="Número de documento" required>
+        <button 
+            type="submit" 
+            class="btn btn-primary" 
+            [ngClass]="{'btn-hover': !successMessage}"
+        > 
+            Registrarse 
+        </button>
     </form>
     <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="countdown" *ngIf="successMessage">Cuenta regresiva: {{ countdown }}</div>
 </div>
 
 

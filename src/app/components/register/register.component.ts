@@ -16,6 +16,8 @@ export class RegisterComponent {
   password: string = '';
   confirmPassword: string = '';
   errorMessage: string = '';
+  successMessage: string = ''; 
+  countdown: number = 10; 
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -32,8 +34,16 @@ export class RegisterComponent {
         password: this.password,
       }).subscribe(
         () => {
+          this.successMessage = 'Registro exitoso. Redirigiendo en 10 segundos...'; // Mensaje de éxito
           console.log('Usuario registrado con éxito');
-          this.router.navigate(['/login']); // Redirigir a la página de login
+          // Inicia la cuenta regresiva
+          const countdownInterval = setInterval(() => {
+            this.countdown--;
+            if (this.countdown === 0) {
+              clearInterval(countdownInterval);
+              this.router.navigate(['/login']); // Redirigir a la página de login
+            }
+          }, 1000);
         },
         (error) => {
           console.error('Error al registrar el usuario:', error); // Imprime el error en la consola
@@ -42,7 +52,7 @@ export class RegisterComponent {
           } else {
             this.errorMessage = 'Error al registrar el usuario. Intenta nuevamente.';
           }
-        }  
+        }
       );
     } else {
       this.errorMessage = 'Las contraseñas no coinciden'; // Mensaje de error si las contraseñas no coinciden
