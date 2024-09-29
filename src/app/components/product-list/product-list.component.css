@@ -1,0 +1,19 @@
+.product-list {
+    padding: 20px;
+  }
+  
+  .product-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+  }
+  
+  .product-item h3 {
+    margin: 0 0 10px;
+  }
+  
+  .product-item p {
+    margin: 0;
+  }
+  
