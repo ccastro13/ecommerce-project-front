@@ -16,14 +16,32 @@ export class RegisterComponent {
   password: string = '';
   confirmPassword: string = '';
   errorMessage: string = '';
-  successMessage: string = ''; 
-  countdown: number = 10; 
+  passwordError: boolean = false;
 
   constructor(private userService: UserService, private router: Router) {}
 
-  onSubmit(): void {
-    this.errorMessage = ''; // Reinicia el mensaje de error al enviar
+  validatePassword(): void {
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,12}$/;
+    this.passwordError = !passwordRegex.test(this.password);
+  }
 
+  formValid(): boolean {
+    return (
+      this.fullName.trim() !== '' &&
+      this.email.trim() !== '' &&
+      this.city.trim() !== '' &&
+      this.phoneNumber.trim() !== '' &&
+      this.documentNumber.trim() !== '' &&
+      this.password.trim() !== '' &&
+      this.confirmPassword.trim() !== '' &&
+      this.password === this.confirmPassword
+    );
+  }
+
+  onSubmit(): void {
+    this.errorMessage = ''; // Reinicia el mensaje de error
+  
     if (this.password === this.confirmPassword) {
       this.userService.register({
         fullName: this.fullName,
@@ -34,29 +52,24 @@ export class RegisterComponent {
         password: this.password,
       }).subscribe(
         () => {
-          this.successMessage = 'Registro exitoso. Redirigiendo en 10 segundos...'; // Mensaje de éxito
           console.log('Usuario registrado con éxito');
-          // Inicia la cuenta regresiva
-          const countdownInterval = setInterval(() => {
-            this.countdown--;
-            if (this.countdown === 0) {
-              clearInterval(countdownInterval);
-              this.router.navigate(['/login']); // Redirigir a la página de login
-            }
-          }, 1000);
+          alert('Registro exitoso. Redirigiendo al inicio de sesión...');
+          this.router.navigate(['/login']); // Redirigir al inicio de sesión
         },
         (error) => {
-          console.error('Error al registrar el usuario:', error); // Imprime el error en la consola
-          if (error.error && error.error.message) {
-            this.errorMessage = error.error.message; // Muestra el mensaje de error específico
+          console.error('Error al registrar el usuario', error);
+          if (error.status === 409) { //(documento o correo ya registrado)
+            this.errorMessage = 'El documento o el correo ya están registrados.';
           } else {
             this.errorMessage = 'Error al registrar el usuario. Intenta nuevamente.';
           }
         }
       );
     } else {
-      this.errorMessage = 'Las contraseñas no coinciden'; // Mensaje de error si las contraseñas no coinciden
+      this.errorMessage = 'Las contraseñas no coinciden.';
       console.error(this.errorMessage);
     }
   }
+  
+  
 }

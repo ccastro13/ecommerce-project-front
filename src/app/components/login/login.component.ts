@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,13 +10,23 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  errorMessage: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
-  onSubmit(): void {
-    // Aquí deberías realizar la autenticación
-    // Si es exitosa, redirigir al usuario a la página deseada
-    // Por ahora, simplemente redirigiremos a la lista de productos
-    this.router.navigate(['/products']);
+  onLogin(): void {
+    this.errorMessage = '';
+
+    this.userService.login({ email: this.email, password: this.password }).subscribe(
+      () => {
+        console.log('Inicio de sesión exitoso');
+        this.router.navigate(['/products']); // Redirigir al dashboard o página principal
+      },
+      (error) => {
+        console.error('Error al iniciar sesión', error);
+        this.errorMessage = 'Correo o contraseña incorrectos.';
+      }
+    );
   }
 }
+

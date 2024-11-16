@@ -104,4 +104,11 @@ button:disabled {
   button {
       font-size: 14px; /* Tamaño de fuente reducido */
   }
+
+  .password-hint {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
 }
