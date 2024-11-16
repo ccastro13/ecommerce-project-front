@@ -12,6 +12,7 @@ import { ProductListComponent } from "./components/product-list/product-list.com
 import { RegisterComponent } from "./components/register/register.component";
 import { ResetPasswordComponent } from "./components/reset-password/reset-password.component";
 import { ProductService } from "./services/product.service";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 
 
@@ -24,7 +25,8 @@ import { ProductService } from "./services/product.service";
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

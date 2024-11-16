@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-left a,
+.nav-right a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  text-decoration: underline;
+}
+
+  

@@ -1,114 +1,37 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #e0f7fa; /* Fondo de pantalla azul suave */
-  margin: 0;
-  padding: 0;
-}
-
-/* Estilos del contenedor del formulario */
+/* Registration Form */
 .register-container {
-  max-width: 400px; /* Ancho máximo del formulario */
-  margin: 50px auto; /* Centrar el formulario */
+  max-width: 400px;
+  margin: 50px auto;
   padding: 20px;
-  background-color: white; /* Fondo blanco para el formulario */
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra */
-  transition: all 0.3s ease; /* Transición suave */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Título del formulario */
-h2 {
-  text-align: center;
-  color: #007bff; /* Texto azul */
-  margin-bottom: 20px; /* Espacio debajo del título */
+.register-container input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
-/* Estilo de los campos de entrada */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 95%; /* Ancho completo */
-  padding: 10px; /* Espaciado interno */
-  margin: 10px 0; /* Margen superior e inferior */
-  border: 1px solid #007bff; /* Borde azul */
-  border-radius: 5px; /* Bordes redondeados */
-  transition: border-color 0.3s ease; /* Transición suave del color del borde */
+.register-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
-/* Efecto focus en los campos de entrada */
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #ffcc00; /* Color dorado al enfocar */
-  outline: none; /* Quitar el borde de enfoque por defecto */
+.register-container button:hover {
+  background-color: #218838;
 }
 
-/* Estilo del botón */
-button {
-  width: 100%; /* Ancho completo */
-  padding: 10px; /* Espaciado interno */
-  background-color: #b0bec5; /* Color gris */
-  color: white; /* Texto blanco */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño de fuente */
-  cursor: not-allowed; /* Cursor de no permitido por defecto */
-  transition: background-color 0.3s ease; /* Transición suave del color de fondo */
-}
-
-/* Efecto hover en el botón cuando está habilitado */
-button.enabled:hover {
-  background-color: #78909c; /* Color gris más oscuro al pasar el mouse */
-  cursor: pointer; /* Cursor de mano al pasar el mouse */
-}
-
-button:disabled {
-  background-color: #e0e0e0; /* Color gris claro para botón deshabilitado */
-  cursor: not-allowed; /* Cursor de no permitido para el botón deshabilitado */
-}
-
-/* Estilo de mensajes de error */
-.error-message {
-  color: red; /* Texto rojo */
-  margin-top: 10px; /* Espacio superior */
-}
-
-/* Estilo de mensajes de éxito */
-.success-message {
-  color: green; /* Color verde para el mensaje de éxito */
-  font-size: 18px; /* Tamaño de fuente más grande */
-  margin-top: 15px; /* Espacio superior */
-  font-weight: bold; /* Negrita */
-}
-
-/* Estilo de cuenta regresiva */
-.countdown {
-  color: orange; /* Color naranja para la cuenta regresiva */
-  font-size: 16px; /* Tamaño de fuente */
-  margin-top: 5px; /* Espacio superior */
-}
-
-/* Estilos responsivos */
+/* Responsive */
 @media (max-width: 500px) {
   .register-container {
-      padding: 15px; /* Espaciado interno reducido */
+    width: 90%;
   }
-  
-  h2 {
-      font-size: 24px; /* Tamaño de fuente del título reducido */
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  button {
-      font-size: 14px; /* Tamaño de fuente reducido */
-  }
-
-  .password-hint {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-  }
-  
 }

@@ -15,13 +15,18 @@
       placeholder="Correo electrónico"
       required
     />
+    
+    <!-- Campo de contraseña con validación en tiempo real -->
     <input
       type="password"
       [(ngModel)]="password"
       name="password"
       placeholder="Contraseña"
       required
+      (ngModelChange)="onPasswordChange()"
     />
+    
+    <!-- Campo de confirmación de contraseña -->
     <input
       type="password"
       [(ngModel)]="confirmPassword"
@@ -29,6 +34,7 @@
       placeholder="Confirmar contraseña"
       required
     />
+    
     <input
       type="text"
       [(ngModel)]="city"
@@ -50,6 +56,8 @@
       placeholder="Número de documento"
       required
     />
+    
+    <!-- Botón de registro deshabilitado si hay errores -->
     <button
       type="submit"
       [disabled]="passwordError || !formValid()"
@@ -58,8 +66,18 @@
       Registrarse
     </button>
   </form>
-  <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <!-- Mensaje de error de la contraseña -->
+  <div class="error-message" *ngIf="passwordError">
+    {{ passwordErrorMessage }}
+  </div>
+  
+  <!-- Mensaje de error de correo o documento ya registrado -->
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
 </div>
+
   
 
 
